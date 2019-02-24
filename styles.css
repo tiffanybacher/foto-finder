@@ -7,28 +7,28 @@ body {
 }
 
 h1 {
-  font-size: 4.8em;
+  font-size: 4.5em;
   color: #FFF;
   margin: 0;
-  padding: 0;
-  font-weight: 700;
+  padding: 25px 3px 0 0;
+  font-weight: 800;
+  letter-spacing: 5px;
 }
 
-.user-input {
+.header-and-input-area {
   background-color: #3E2A34;
   margin: 0;
-  padding: 30px 55px;
 }
 
 .main-heading--logo {
-  width: 135px;
+  width: 125px;
 }
 
 .search-container {
-  margin: 0;
+  padding: 0 55px;
   display: flex;
   justify-content: center;
-  margin: 35px 0 35px 5px;
+  margin: 35px 0;
 }
 
 .search-input {
@@ -42,7 +42,7 @@ h1 {
 }
 
 .search-input::placeholder {
-  color: #998f91;
+  color: #8C7D83;
 }
 
 .search-btn {
@@ -69,5 +69,19 @@ h1 {
   border: 4px solid #D47360;
 }
 
+.user-input-area {
+  text-align: left;
+  padding: 55px;
+}
 
+.input-label {
+  color: #8C7D83;
+  font-size: 1.7em;
+}
+
+.user-input {
+  width: 100%;
+  height: 100px;
+  margin: 10px 0 65px 0;
+}
 
