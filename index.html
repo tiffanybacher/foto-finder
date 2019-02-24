@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Foto Finder</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+  <section class="user-input">
+    <h1 class="heading">
+      <span class="heading--foto">FOTO</span>
+      <img src="" alt="" class="camera-icon">
+      <span class="heading--finder">FINDER</span>
+    </h1>
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search">
+      <button class="search-button"><i class="search-icon fas fa-search"></i></button>
+    </div>
+    <label class="title-input-label" for="title-input">Title</label>
+    <input type="text" id="title-input">
+    <label class="caption-input-label" for="caption-input">Caption</label>
+    <input type="text" id="caption-input">
+    <button class="choose-file-btn">Choose File</button>
+    <div class="view-and-add-btns">
+      <button class="view-favorites-btn">View<span class="num-of-favorites"></span>Favorites</button>
+    </div>
+  </section>
+  <section class="photo-area">
+<!--     <template> -->
+      <article class="photo-card">
+        <h2 class="photo-card-heading"></h2>
+        <img src="" alt="" class="photo-card-img">
+        <p class="photo-card-caption"></p>
+        <div class="photo-card-icons">
+          <div class="photo-card--delete"></div>
+          <div class="photo-card--favorite"></div>
+        </div>
+      </article>
+<!--     </template> -->
+  </section>
+</body>
+</html>
