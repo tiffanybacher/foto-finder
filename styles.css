@@ -4,31 +4,27 @@ body {
   margin: 0 auto;
   text-align: center;
   color: #3E2A34;
+  background-color: #3E2A34;
 }
 
 h1 {
-  font-size: 4.8em;
+  font-size: 4.5em;
   color: #FFF;
   margin: 0;
-  padding: 0;
-  font-weight: 700;
-}
-
-.user-input {
-  background-color: #3E2A34;
-  margin: 0;
-  padding: 30px 55px;
+  padding: 25px 3px 0 0;
+  font-weight: 800;
+  letter-spacing: 5px;
 }
 
 .main-heading--logo {
-  width: 135px;
+  width: 125px;
 }
 
 .search-container {
-  margin: 0;
+  padding: 0 55px;
   display: flex;
   justify-content: center;
-  margin: 35px 0 35px 5px;
+  margin: 35px 0;
 }
 
 .search-input {
@@ -42,7 +38,7 @@ h1 {
 }
 
 .search-input::placeholder {
-  color: #998f91;
+  color: #8C7D83;
 }
 
 .search-btn {
@@ -68,6 +64,60 @@ h1 {
   background-color: #D47360;
   border: 4px solid #D47360;
 }
+
+.user-area {
+  padding: 55px;
+}
+
+.user-inputs {
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+.input-label {
+  color: #8C7D83;
+  font-size: 1.7em;
+}
+
+.user-input {
+  width: 100%;
+  height: 100px;
+  margin: 10px 0 60px 0;
+  padding: 0;
+}
+
+.user-btns {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-btn {
+  background-color: #5B4447;
+  border: 4px solid #5B4447;
+  color: #FFF;
+  letter-spacing: 2px;
+  padding: 28px;
+}
+
+.choose-file-btn {
+  font-size: 1.8em;
+  margin: 20px 0 0 0;
+}
+
+.view-and-add-btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 70px 0 0 0;
+ 
+}
+
+.view-favorites-btn,
+.add-to-album-btn {
+  font-size: 1.4em;
+  width: 45%;
+}
+
+
 
 
 
