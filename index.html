@@ -21,15 +21,19 @@
     </div>
   </header>
   <section class="user-area">
-    <article class="user-inputs">
-      <label class="input-label title-input-label" for="title-input">Title</label>
-      <input type="text" class="user-input" id="title-input">
-      <label class="input-label caption-input-label" for="caption-input">Caption</label>
-      <input type="text" class="user-input" id="caption-input">
+    <article class="user-input-area">
+      <div class="title-input-area">
+        <input type="text" class="user-input" id="title-input">
+        <label class="input-label title-input-label" for="title-input">Title</label>
+      </div>
+      <div class="caption-input-area">
+        <input type="text" class="user-input" id="caption-input">
+        <label class="input-label caption-input-label" for="caption-input">Caption</label>
+      </div>
     </article>
-    <article class="user-btns">
+    <article class="user-btn-area">
       <button class=" user-btn choose-file-btn">Choose File</button>
-      <div class="view-and-add-btns">
+      <div class="view-and-add-btn-area">
         <button class="user-btn view-favorites-btn">View <span class="num-of-favorites"></span> Favorites</button>
         <button class="user-btn add-to-album-btn">Add to Album</button>
       </div>
@@ -39,9 +43,9 @@
     <h2 class="empty-photo-area-heading photo-card-heading">NO PHOTOS YET</h2>
     <!-- <template> -->
       <article class="photo-card">
-        <h2 class="photo-card-heading">Title Goes Here</h2>
+        <h2 class="photo-card-heading" contenteditable="true">Title Goes Here</h2>
         <img src="images/waterfall.jpg" alt="" class="photo-card-img">
-        <p class="photo-card-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p class="photo-card-caption" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
         <div class="photo-card-icons">
           <div class="card-icon delete-icon"></div>
           <div class="card-icon favorite-icon"></div>
