@@ -9,7 +9,6 @@ var addToAlbumBtn = document.querySelector('.add-to-album-btn');
 var photoArea = document.querySelector('.photo-area');
 var noPhotosMsg = document.querySelector('.empty-photo-area-heading');
 var photoCardTemplate = document.querySelector('template');
-// var cardTitle = document.querySelector('.photo-card-heading');
 
 
 // *** EVENT LISTENERS *** //
@@ -63,6 +62,7 @@ function createPhotoCard(photo) {
   addPhotoEventListeners(photoCard);
   photoArea.insertBefore(photoCard, photoArea.firstChild)
   clearEmptyPhotosMsg();
+  clearUserInputs();
 }
 
 function addPhotoProperties(card, photo) {
@@ -78,6 +78,11 @@ function addPhotoEventListeners(card) {
 
 function clearEmptyPhotosMsg() {
   noPhotosMsg.style.display = 'none';
+}
+
+function clearUserInputs() {
+  titleInput.value = '';
+  captionInput.value = '';
 }
 
 function storePhotos() {
