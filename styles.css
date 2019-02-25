@@ -211,7 +211,7 @@ body {
   background-image: url("images/favorite-active.svg")
 }
 
-/*@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) {
 
   .header {
     display: flex;
