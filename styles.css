@@ -7,6 +7,12 @@ body {
   background-color: #3E2A34;
 }
 
+input,
+button {
+  border: none;
+  outline: none;
+}
+
 .main-heading {
   font-size: 4.5em;
   color: #FFF;
@@ -52,7 +58,6 @@ body {
 }
 
 .search-input:focus {
-  outline: none;
   border: 4px solid #D47360;
 }
 
@@ -61,6 +66,11 @@ body {
 }
 
 .search-input:focus + .search-btn {
+  background-color: #D47360;
+  border: 4px solid #D47360;
+}
+
+.search-btn:focus {
   background-color: #D47360;
   border: 4px solid #D47360;
 }
@@ -97,7 +107,6 @@ body {
 
 .user-input:focus {
   border: 4px solid #D47360;
-  outline: none;
 }
 
 .user-input:focus + .input-label {
@@ -111,18 +120,35 @@ body {
 
 .user-btn {
   background-color: #5B4447;
-  border: none;
   color: #FFF;
   letter-spacing: 2px;
   padding: 28px;
-  outline: none;
+  cursor: pointer;
 }
 
-.user-btn:active {
+.user-btn:hover,
+.user-btn:focus {
   background-color: #8C7D83;
 }
 
-.choose-file-btn {
+.user-btn:active {
+  background-color: #5B4447;
+}
+
+#file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+#file-input:focus + .file-input-btn {
+  background-color: #8C7D83
+}
+
+.file-input-btn {
   font-size: 1.8em;
   margin: 20px 0 0 0;
 }
@@ -193,20 +219,23 @@ body {
   background-repeat: no-repeat;
   height: 110px;
   width: 110px;
+  background-color: #5B4447;
 }
 
 .delete-icon {
   background-image: url("images/delete.svg");
 }
  
+.delete-icon:focus,
 .delete-icon:active {
-  background-image: url("images/delete-active.svg")
+  background-image: url("images/delete-active.svg");
 }
 
 .favorite-icon {
   background-image: url("images/favorite.svg");
 }
 
+.favorite-icon:focus,
 .favorite-icon:active {
   background-image: url("images/favorite-active.svg")
 }
