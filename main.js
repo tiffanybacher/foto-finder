@@ -24,6 +24,8 @@ var allPhotos = getPhotos();
 
 
 // *** FUNCTIONS *** //
+window.onload = displayCards();
+
 function getPhotos() {
   var photosString = localStorage.allPhotos || '[]';
   return JSON.parse(photosString);
