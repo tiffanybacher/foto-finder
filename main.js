@@ -17,7 +17,7 @@ searchInput.addEventListener('input', searchCards);
 searchBtn.addEventListener('click', searchCards);
 chooseFileBtn.addEventListener('click', uploadPhoto);
 viewFavoritesBtn.addEventListener('click', viewFavoritePhotos);
-captionInput.addEventListener('keypress', addOnEnter);
+captionInput.addEventListener('keypress', createPhotoOnEnter);
 addToAlbumBtn.addEventListener('click', createNewPhoto);
 
 
@@ -73,6 +73,7 @@ function addPhotoProperties(card, photo) {
 
 function addPhotoEventListeners(card) {
   card.querySelector('.photo-card-heading').addEventListener('keypress', saveEditOnEnter);
+  card.querySelector('.photo-card-caption').addEventListener('keypress', saveEditOnEnter);
 }
 
 function clearEmptyPhotosMsg() {
@@ -83,7 +84,7 @@ function storePhotos() {
   localStorage.allPhotos = JSON.stringify(allPhotos);
 }
 
-function addOnEnter(e) {
+function createPhotoOnEnter(e) {
   if(e.key === 'Enter') {
     addToAlbumBtn.click();
   };
