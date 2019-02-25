@@ -10,19 +10,27 @@ var photoArea = document.querySelector('.photo-area');
 var noPhotosMsg = document.querySelector('.empty-photo-area-heading');
 var photoCardTemplate = document.querySelector('template');
 
+
 // *** EVENT LISTENERS *** //
 searchInput.addEventListener('input', searchCards);
 searchBtn.addEventListener('click', searchCards);
 chooseFileBtn.addEventListener('click', uploadPhoto);
 viewFavoritesBtn.addEventListener('click', viewFavoritePhotos);
-addToAlbumBtn.addEventListener('click', addPhotoCard);
+addToAlbumBtn.addEventListener('click', createNewPhoto);
+
 
 // *** GLOBAL VARIABLES *** //
-var allPhotoCards;
+var allPhotos = getPhotos();
+
 
 // *** FUNCTIONS *** //
-function getPhotoCards() {
+function getPhotos() {
+  var photosString = localStorage.allPhotos || '[]';
+  return JSON.parse(photosString);
+}
 
+function displayCards() {
+  allPhotos.forEach(photo => createPhotoCard(photo));
 }
 
 function searchCards() {
@@ -37,14 +45,29 @@ function viewFavoritePhotos() {
 
 }
 
-function addPhotoCard() {
-  noPhotosMsg.style.display = 'none';
-  var photoCard = photoCardTemplate.content.cloneNode(true);
-  photoArea.insertBefore(photoCard, photoArea.firstChild)
+function createNewPhoto() {
+  var photoObject = new Photo(Date.now(), titleInput.value, captionInput.value);
+  console.log(photoObject);
+  createPhotoCard(photoObject);
+  photoObject.saveToStorage(allPhotos);
+  storePhotos();
 }
 
-function storePhotoCards() {
+function createPhotoCard(photo) {
+  var photoCard = photoCardTemplate.content.cloneNode(true);
+  addPhotoProperties(photoCard, photo)
+  photoArea.insertBefore(photoCard, photoArea.firstChild)
+  noPhotosMsg.style.display = 'none';
+}
 
+function addPhotoProperties(card, photo) {
+  card.querySelector('article').dataset.id = photo.id;
+  card.querySelector('.photo-card-heading').innerText = photo.title;
+  card.querySelector('.photo-card-caption').innerText = photo.caption;
+}
+
+function storePhotos() {
+  localStorage.allPhotos = JSON.stringify(allPhotos);
 }
 
 
