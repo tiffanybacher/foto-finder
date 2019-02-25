@@ -38,7 +38,9 @@ function viewFavoritePhotos() {
 }
 
 function addPhotoCard() {
- 
+  noPhotosMsg.style.display = 'none';
+  var photoCard = photoCardTemplate.content.cloneNode(true);
+  photoArea.insertBefore(photoCard, photoArea.firstChild)
 }
 
 function storePhotoCards() {
