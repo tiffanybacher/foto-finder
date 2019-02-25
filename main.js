@@ -53,7 +53,6 @@ function createNewPhoto() {
   console.log(photoObject);
   createPhotoCard(photoObject);
   photoObject.saveToStorage(allPhotos);
-  storePhotos();
 }
 
 function createPhotoCard(photo) {
@@ -72,7 +71,9 @@ function addPhotoProperties(card, photo) {
 }
 
 function addPhotoEventListeners(card) {
-  card.querySelector('.photo-card-heading').addEventListener('keypress', saveEditOnEnter);
+  var cardTitle = card.querySelector('.photo-card-heading');
+  cardTitle.addEventListener('keypress', saveEditOnEnter);
+  cardTitle.addEventListener('blur', saveEdit);
   card.querySelector('.photo-card-caption').addEventListener('keypress', saveEditOnEnter);
 }
 
@@ -85,20 +86,28 @@ function clearUserInputs() {
   captionInput.value = '';
 }
 
-function storePhotos() {
-  localStorage.allPhotos = JSON.stringify(allPhotos);
-}
-
 function createPhotoOnEnter(e) {
   if(e.key === 'Enter') {
     addToAlbumBtn.click();
   };
 }
 
+function saveEdit(e) {
+  getPhotoIndex(e);
+
+}
+
 function saveEditOnEnter(e) {
   if(e.key === 'Enter') {
     e.target.blur();
   }
+}
+
+function getPhotoIndex(e) {
+  var photoCard = e.target.closest('article');
+  var cardID = parseInt(photoCard.dataset.id);
+  var index = allPhotos.findIndex(photo => photo.id === cardID);
+  return index;
 }
 
 
