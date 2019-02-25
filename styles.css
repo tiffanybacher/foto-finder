@@ -211,26 +211,47 @@ body {
   background-image: url("images/favorite-active.svg")
 }
 
+/*@media only screen and (min-width: 600px) {
 
-/* MEDIA QUERY
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 50px 0 100px;
+  }
 
-.user-btn:hover {
-  background-color: #8C7D83;
-}
+  .search-container {
+    width: 30%;
+    margin-top: 50px;
+  }
 
-.user-btn:active {
-  background-color: #5B4447;
-}
+  .user-area {
+    max-width: 50%;
+    margin: 0 auto;
+  }
 
-.delete-icon:hover {
-  background-image: url("images/delete-active.svg")
-}
-.favorite-icon:hover {
-  background-image: url("images/favorite-active.svg")
-}
+  .user-btn:hover {
+    background-color: #8C7D83;
+  }
 
+  .user-btn:active {
+    background-color: #5B4447;
+  }
 
+  .photo-area {
+    padding: 100px;
+  }
 
+  .photo-card {
+    margin: 50px;
+    max-width: 575px
+  }
 
+  .delete-icon:hover {
+    background-image: url("images/delete-active.svg")
+  }
 
+  .favorite-icon:hover {
+    background-image: url("images/favorite-active.svg")
+  }
 
+}*/
