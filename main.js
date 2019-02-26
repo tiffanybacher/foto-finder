@@ -9,6 +9,7 @@ var addToAlbumBtn = document.querySelector('.add-to-album-btn');
 var photoArea = document.querySelector('.photo-area');
 var noPhotosMsg = document.querySelector('.empty-photo-area-heading');
 var photoCardTemplate = document.querySelector('template');
+// var photoCard = document.querySelector('.photo-card');
 
 
 // *** EVENT LISTENERS *** //
@@ -18,6 +19,8 @@ chooseFileBtn.addEventListener('click', uploadPhoto);
 viewFavoritesBtn.addEventListener('click', viewFavoritePhotos);
 captionInput.addEventListener('keypress', createPhotoOnEnter);
 addToAlbumBtn.addEventListener('click', createNewPhoto);
+// photoCardTemplate.addEventListener('click', saveEdit);
+// photoCard.addEventListener('click', saveEdit);
 
 
 // *** GLOBAL VARIABLES *** //
@@ -52,6 +55,7 @@ function createNewPhoto() {
   var photoObject = new Photo(Date.now(), titleInput.value, captionInput.value);
   console.log(photoObject);
   createPhotoCard(photoObject);
+  allPhotos.push(photoObject);
   photoObject.saveToStorage(allPhotos);
 }
 
@@ -72,9 +76,11 @@ function addPhotoProperties(card, photo) {
 
 function addPhotoEventListeners(card) {
   var cardTitle = card.querySelector('.photo-card-heading');
-  cardTitle.addEventListener('keypress', saveEditOnEnter);
+  var cardCaption = card.querySelector('.photo-card-caption');
   cardTitle.addEventListener('blur', saveEdit);
-  card.querySelector('.photo-card-caption').addEventListener('keypress', saveEditOnEnter);
+  cardTitle.addEventListener('keypress', saveEditOnEnter);
+  cardCaption.addEventListener('blur', saveEdit);
+  cardCaption.addEventListener('keypress', saveEditOnEnter);
 }
 
 function clearEmptyPhotosMsg() {
@@ -93,8 +99,8 @@ function createPhotoOnEnter(e) {
 }
 
 function saveEdit(e) {
-  getPhotoIndex(e);
-
+  var photoToEdit = reinstatePhoto(e);
+  // photoToEdit.updatePhoto(e.target.innerText, e.target.classList, allPhotos);
 }
 
 function saveEditOnEnter(e) {
@@ -103,11 +109,16 @@ function saveEditOnEnter(e) {
   }
 }
 
-function getPhotoIndex(e) {
+function getPhoto(e) {
   var photoCard = e.target.closest('article');
   var cardID = parseInt(photoCard.dataset.id);
-  var index = allPhotos.findIndex(photo => photo.id === cardID);
-  return index;
+  var i = allPhotos.findIndex(photo => photo.id === cardID);
+  return allPhotos[i];
+}
+
+function reinstatePhoto(e) {
+ var photo = getPhoto(e);
+ return new Photo(photo.id, photo.title, photo.caption);
 }
 
 

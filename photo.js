@@ -9,7 +9,6 @@ class Photo {
   }
 
   saveToStorage(allPhotos) {
-    allPhotos.push(this);
     localStorage.allPhotos = JSON.stringify(allPhotos);
   }
 
@@ -17,7 +16,10 @@ class Photo {
 
   }
 
-  updatePhoto() {
-
-  }
+  // updatePhoto(text, classList, allPhotos) {
+  //   if (classList[0] === 'photo-card-heading') {
+  //   this.title = text;
+  //   }
+  //   this.saveToStorage(allPhotos);
+  // }
 }
