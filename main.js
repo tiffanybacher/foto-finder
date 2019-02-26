@@ -21,6 +21,7 @@ captionInput.addEventListener('keypress', createPhotoOnEnter);
 addToAlbumBtn.addEventListener('click', createNewPhoto);
 photoArea.addEventListener('focusout', saveEdit);
 photoArea.addEventListener('keypress', saveEditOnEnter);
+photoArea.addEventListener('click', favoriteACard)
 
 // *** GLOBAL VARIABLES *** //
 var allPhotos = getPhotos();
@@ -61,7 +62,6 @@ function createNewPhoto() {
 function createPhotoCard(photo) {
   var photoCard = photoCardTemplate.content.cloneNode(true);
   addPhotoProperties(photoCard, photo)
-  // addPhotoEventListeners(photoCard);
   photoArea.insertBefore(photoCard, photoArea.firstChild)
   clearEmptyPhotosMsg();
   clearUserInputs();
@@ -83,23 +83,30 @@ function clearUserInputs() {
 }
 
 function createPhotoOnEnter(e) {
-  if(e.key === 'Enter') {
+  if (e.key === 'Enter') {
     addToAlbumBtn.click();
   };
 }
 
 function saveEdit(e) {
-  var photoToEdit = reinstatePhoto(e);
   if (event.target.classList.contains('photo-card-heading') || event.target.classList.contains('photo-card-caption')) {
-    photoToEdit.updatePhoto(e.target.innerText, e.target.classList, allPhotos);
-    allPhotos[getPhotoIndex(e)] = photoToEdit;
-    photoToEdit.saveToStorage(allPhotos);
+    var photoToEdit = reinstatePhoto(e);
+    photoToEdit.updatePhoto(e.target.innerText, e.target.classList);
+    savePhoto(e, photoToEdit);
   }
 }
 
 function saveEditOnEnter(e) {
-  if(e.key === 'Enter') {
+  if (e.key === 'Enter') {
     e.target.blur();
+  }
+}
+
+function favoriteACard(e) {
+  if (e.target.classList.contains('favorite-icon')) {
+    var photoToEdit = reinstatePhoto(e);
+    photoToEdit.updateFavoriteStatus();
+    savePhoto(e, photoToEdit);
   }
 }
 
@@ -113,7 +120,12 @@ function getPhotoIndex(e) {
 function reinstatePhoto(e) {
  var i = getPhotoIndex(e);
  var photo = allPhotos[i];
- return new Photo(photo.id, photo.title, photo.caption);
+ return new Photo(photo.id, photo.title, photo.caption, photo.file, photo.favorite);
+}
+
+function savePhoto(e, photo) {
+  allPhotos[getPhotoIndex(e)] = photo;
+  photo.saveToStorage(allPhotos);
 }
 
 

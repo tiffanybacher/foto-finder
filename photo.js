@@ -1,11 +1,11 @@
 class Photo {
 
-  constructor(id, title, caption, file) {
+  constructor(id, title, caption, file, favorite) {
     this.id = id;
     this.title = title;
     this.caption = caption;
     this.file = file || '';
-    this.favorite = false;
+    this.favorite = favorite || false;
   }
 
   saveToStorage(allPhotos) {
@@ -23,5 +23,10 @@ class Photo {
       this.caption = text;
     }
     console.log(this)
+  }
+
+  updateFavoriteStatus() {
+    this.favorite = !this.favorite
+    console.log(this.favorite)
   }
 }
