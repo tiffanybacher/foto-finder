@@ -100,7 +100,9 @@ function createPhotoOnEnter(e) {
 
 function saveEdit(e) {
   var photoToEdit = reinstatePhoto(e);
-  // photoToEdit.updatePhoto(e.target.innerText, e.target.classList, allPhotos);
+  photoToEdit.updatePhoto(e.target.innerText, e.target.classList, allPhotos);
+  allPhotos[getPhotoIndex(e)] = photoToEdit;
+  photoToEdit.saveToStorage(allPhotos);
 }
 
 function saveEditOnEnter(e) {
@@ -109,15 +111,16 @@ function saveEditOnEnter(e) {
   }
 }
 
-function getPhoto(e) {
+function getPhotoIndex(e) {
   var photoCard = e.target.closest('article');
   var cardID = parseInt(photoCard.dataset.id);
   var i = allPhotos.findIndex(photo => photo.id === cardID);
-  return allPhotos[i];
+  return i;
 }
 
 function reinstatePhoto(e) {
- var photo = getPhoto(e);
+ var i = getPhotoIndex(e);
+ var photo = allPhotos[i];
  return new Photo(photo.id, photo.title, photo.caption);
 }
 

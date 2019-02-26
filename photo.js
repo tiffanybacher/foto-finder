@@ -16,10 +16,11 @@ class Photo {
 
   }
 
-  // updatePhoto(text, classList, allPhotos) {
-  //   if (classList[0] === 'photo-card-heading') {
-  //   this.title = text;
-  //   }
-  //   this.saveToStorage(allPhotos);
-  // }
+  updatePhoto(text, classList) {
+    if (classList.value === 'photo-card-heading') {
+      this.title = text;
+    } else {
+      this.caption = text;
+    }
+  }
 }
