@@ -9,7 +9,7 @@ var addToAlbumBtn = document.querySelector('.add-to-album-btn');
 var photoArea = document.querySelector('.photo-area');
 var noPhotosMsg = document.querySelector('.empty-photo-area-heading');
 var photoCardTemplate = document.querySelector('template');
-// var photoCard = document.querySelector('.photo-card');
+var photoArea = document.querySelector('.photo-area');
 
 
 // *** EVENT LISTENERS *** //
@@ -19,9 +19,8 @@ chooseFileBtn.addEventListener('click', uploadPhoto);
 viewFavoritesBtn.addEventListener('click', viewFavoritePhotos);
 captionInput.addEventListener('keypress', createPhotoOnEnter);
 addToAlbumBtn.addEventListener('click', createNewPhoto);
-// photoCardTemplate.addEventListener('click', saveEdit);
-// photoCard.addEventListener('click', saveEdit);
-
+photoArea.addEventListener('focusout', saveEdit);
+photoArea.addEventListener('keypress', saveEditOnEnter);
 
 // *** GLOBAL VARIABLES *** //
 var allPhotos = getPhotos();
@@ -62,7 +61,7 @@ function createNewPhoto() {
 function createPhotoCard(photo) {
   var photoCard = photoCardTemplate.content.cloneNode(true);
   addPhotoProperties(photoCard, photo)
-  addPhotoEventListeners(photoCard);
+  // addPhotoEventListeners(photoCard);
   photoArea.insertBefore(photoCard, photoArea.firstChild)
   clearEmptyPhotosMsg();
   clearUserInputs();
@@ -72,15 +71,6 @@ function addPhotoProperties(card, photo) {
   card.querySelector('article').dataset.id = photo.id;
   card.querySelector('.photo-card-heading').innerText = photo.title;
   card.querySelector('.photo-card-caption').innerText = photo.caption;
-}
-
-function addPhotoEventListeners(card) {
-  var cardTitle = card.querySelector('.photo-card-heading');
-  var cardCaption = card.querySelector('.photo-card-caption');
-  cardTitle.addEventListener('blur', saveEdit);
-  cardTitle.addEventListener('keypress', saveEditOnEnter);
-  cardCaption.addEventListener('blur', saveEdit);
-  cardCaption.addEventListener('keypress', saveEditOnEnter);
 }
 
 function clearEmptyPhotosMsg() {
@@ -100,9 +90,11 @@ function createPhotoOnEnter(e) {
 
 function saveEdit(e) {
   var photoToEdit = reinstatePhoto(e);
-  photoToEdit.updatePhoto(e.target.innerText, e.target.classList, allPhotos);
-  allPhotos[getPhotoIndex(e)] = photoToEdit;
-  photoToEdit.saveToStorage(allPhotos);
+  if (event.target.classList.contains('photo-card-heading') || event.target.classList.contains('photo-card-caption')) {
+    photoToEdit.updatePhoto(e.target.innerText, e.target.classList, allPhotos);
+    allPhotos[getPhotoIndex(e)] = photoToEdit;
+    photoToEdit.saveToStorage(allPhotos);
+  }
 }
 
 function saveEditOnEnter(e) {
