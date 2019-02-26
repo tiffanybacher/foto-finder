@@ -22,5 +22,6 @@ class Photo {
     } else {
       this.caption = text;
     }
+    console.log(this)
   }
 }
