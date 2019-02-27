@@ -3,6 +3,7 @@ var searchInput = document.querySelector('.search-input');
 var searchBtn = document.querySelector('.search-btn');
 var titleInput = document.querySelector('#title-input');
 var captionInput = document.querySelector('#caption-input');
+var fileInput = document.querySelector('#file-input');
 var chooseFileBtn = document.querySelector('.file-input-btn');
 var viewFavoritesBtn = document.querySelector('.view-favorites-btn');
 var addToAlbumBtn = document.querySelector('.add-to-album-btn');
@@ -10,6 +11,7 @@ var userArea = document.querySelector('.user-input-area');
 var photoArea = document.querySelector('.photo-area');
 var noPhotosMsg = document.querySelector('.empty-photo-area-heading');
 var photoCardTemplate = document.querySelector('template');
+var reader = new FileReader();
 
 
 // *** EVENT LISTENERS *** //
@@ -17,9 +19,9 @@ searchInput.addEventListener('input', searchCards);
 searchBtn.addEventListener('click', searchCards);
 titleInput.addEventListener('input', enableAddBtn);
 captionInput.addEventListener('input', enableAddBtn);
-chooseFileBtn.addEventListener('click', uploadPhoto);
 viewFavoritesBtn.addEventListener('click', toggleFavoritesBtn);
 captionInput.addEventListener('keypress', createNewPhotoOnEnter);
+addToAlbumBtn.addEventListener('click', uploadPhoto);
 addToAlbumBtn.addEventListener('click', createNewPhoto);
 userArea.addEventListener('keypress', blurOnEnter);
 photoArea.addEventListener('focusout', saveEdit);
@@ -48,7 +50,11 @@ function searchCards() {
 }
 
 function uploadPhoto() {
-
+  console.log(fileInput.files[0])
+if (fileInput.files[0]) {
+    reader.readAsDataURL(fileInput.files[0]); 
+    reader.onload = createNewPhoto;
+  }
 }
 
 function toggleFavoritesBtn() {
@@ -73,8 +79,9 @@ function enableAddBtn() {
   }
 }
 
-function createNewPhoto() {
-  var photo = new Photo(Date.now(), titleInput.value, captionInput.value);
+function createNewPhoto(e) {
+  console.log(e.target.results)
+  var photo = new Photo(Date.now(), titleInput.value, captionInput.value, e.target.result);
   createPhotoCard(photo);
   allPhotos.push(photo);
   photo.saveToStorage(allPhotos);
@@ -90,9 +97,10 @@ function createPhotoCard(photo) {
   clearUserInputs();
 }
 
-function addPhotoProperties(card, photo) {
+function addPhotoProperties(card, photo, e) {
   card.querySelector('article').dataset.id = photo.id;
   card.querySelector('.photo-card-heading').innerText = photo.title;
+  // photoCardTemplate.innerHTML += `<img src=${e.target.result} />`;
   card.querySelector('.photo-card-caption').innerText = photo.caption;
 }
 
