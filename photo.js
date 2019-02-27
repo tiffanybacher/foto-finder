@@ -12,8 +12,9 @@ class Photo {
     localStorage.allPhotos = JSON.stringify(allPhotos);
   }
 
-  deleteFromStorage(allPhotos) {
+  deleteFromStorage(allPhotos, i) {
     allPhotos.splice(i, 1);
+    this.saveToStorage(allPhotos);
   }
 
   updatePhoto(text, classList) {

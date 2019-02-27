@@ -227,8 +227,7 @@ button {
   background-image: url("images/delete.svg");
 }
  
-.delete-icon:focus,
-.delete-icon:active {
+.delete-icon:hover {
   background-image: url("images/delete-active.svg");
 }
 
