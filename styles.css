@@ -5,6 +5,7 @@ body {
   text-align: center;
   color: #3E2A34;
   background-color: #3E2A34;
+  min-width: 320px;
 }
 
 input,
@@ -14,32 +15,32 @@ button {
 }
 
 .main-heading {
-  font-size: 4.5em;
+  font-size: 1.4em;
   color: #FFF;
   margin: 0;
-  padding: 25px 3px 0 0;
+  padding: 10px 3px 0 0;
   font-weight: 800;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
 }
 
-.main-heading--logo {
-  width: 125px;
+.main-heading-logo {
+  width: 40px;
 }
 
 .search-container {
-  padding: 0 55px;
+  padding: 0 20px;
   display: flex;
   justify-content: center;
-  margin: 35px 0;
+  margin: 10px 0;
 }
 
 .search-input {
-  height: 80px;
+  height: 6px;
   width: 100%;
-  border: 4px solid #BEB2B4;
-  border-radius: 10px 0 0 10px;
-  font-size: 1.8em;
-  padding: 0 20px;
+  border: 2px solid #BEB2B4;
+  border-radius: 3px 0 0 3px;
+  font-size: .6em;
+  padding: 10px;
   color: #3E2A34;
 }
 
@@ -48,35 +49,32 @@ button {
 }
 
 .search-btn {
-  height: 88px;
-  width: 100px;
+  height: 30px;
+  width: 35px;
   background-color: #BEB2B4;
   color: #FFF;
-  font-size: 2.5em;
-  border: 4px solid #BEB2B4;
-  border-radius: 0 10px 10px 0;
+  font-size: .8em;
+  border: 2px solid #BEB2B4;
+  border-radius: 0 3px 3px 0;
+  padding: 0;
 }
 
 .search-input:focus {
-  border: 4px solid #D47360;
+  border: 2px solid #F2806F;
 }
 
 .search-input:focus::placeholder {
   color: transparent;
 }
 
+.search-btn:focus,
 .search-input:focus + .search-btn {
-  background-color: #D47360;
-  border: 4px solid #D47360;
-}
-
-.search-btn:focus {
-  background-color: #D47360;
-  border: 4px solid #D47360;
+  background-color: #F2806F;
+  border: 2px solid #F2806F;
 }
 
 .user-area {
-  padding: 55px;
+  padding: 20px;
 }
 
 .user-input-area {
@@ -91,26 +89,25 @@ button {
 }
 
 .user-input {
-  height: 95px;
-  margin: 10px 0 60px 0;
-  padding: 0;
-  border: 4px solid #FFF;
+  height: 32px;
+  margin: 3px 0 15px 0;
+  border: 2px solid #FFF;
   color: #3E2A34;
-  font-size: 1.8em;
-  padding: 0 20px;
+  font-size: .7em;
+  padding: 0 10px;
 }
 
 .input-label {
   color: #8C7D83;
-  font-size: 1.7em;
+  font-size: .6em;
 }
 
 .user-input:focus {
-  border: 4px solid #D47360;
+  border: 2px solid #F2806F;
 }
 
 .user-input:focus + .input-label {
-  color: #D47360;
+  color: #F2806F;
 }
 
 .user-btn-area {
@@ -121,8 +118,8 @@ button {
 .user-btn {
   background-color: #5B4447;
   color: #FFF;
-  letter-spacing: 2px;
-  padding: 28px;
+  letter-spacing: 1px;
+  padding: 10px;
   cursor: pointer;
 }
 
@@ -149,32 +146,33 @@ button {
 }
 
 .file-input-btn {
-  font-size: 1.8em;
-  margin: 20px 0 0 0;
+  font-size: .7em;
+  margin: 8px 0 0 0;
 }
 
 .view-and-add-btn-area {
   display: flex;
   justify-content: space-between;
-  margin: 70px 0 15px 0;
+  margin: 22px 0 5px 0;
 }
 
 .view-favorites-btn,
 .add-to-album-btn {
-  font-size: 1.4em;
+  font-size: .5em;
   width: 45%;
 }
 
 .add-to-album-btn:disabled {
   background-color: #3E2A34;
-  border: 4px solid #8C7D83;
+  border: 2px solid #8C7D83;
   color: #8C7D83;
 }
 
 .photo-area {
   background-color: #BEB2B4;
-  min-height: 420px;
-  padding: 65px;
+  min-height: 200px;
+  height: 100%;
+  padding: 25px 25px 0 25px;
 }
 
 .empty-photo-area-heading {
@@ -184,48 +182,46 @@ button {
 
 .photo-card {
   background-color: #FFF;
-  border: 4px solid #8C7D83;
+  border: 2px solid #8C7D83;
   text-align: left;
-  margin: 0 0 65px 0;
+  margin: 0 0 25px 0;
 }
 
-.photo-card-heading {
-  font-size: 3em;
+.photo-card-heading,
+.photo-card-caption {
+  font-size: 1em;
   font-weight: 600;
   margin: 0;
-  padding: 35px;
-  border: 6px solid transparent
+  padding: 10px;
+  border: 3px solid transparent
+}
+
+.photo-card-caption {
+  margin: -6px 0 0 0;
+  line-height: 1.3;
 }
 
 .photo-card-img {
   width: 100%;
 }
 
-.photo-card-caption {
-  font-size: 2.9em;
-  padding: 20px 35px 35px 35px;
-  margin: -6px 0 0 0;
-  line-height: 1.3;
-  border: 6px solid transparent;
-}
-
 .photo-card-heading:focus,
 .photo-card-caption:focus {
   outline: none;
-  border: 6px solid #D47360;
+  border: 3px solid #3E2A34;
 }
 
 .photo-card-icons {
   background-color: #5B4447;
-  padding: 35px;
+  padding: 15px;
   display: flex;
   justify-content: space-between;
 }
 
 .card-icon {
   background-repeat: no-repeat;
-  height: 110px;
-  width: 110px;
+  height: 40px;
+  width: 40px;
   background-color: #5B4447;
 }
 
@@ -246,48 +242,110 @@ button {
   background-image: url("images/favorite-active.svg")
 }
 
-/*@media only screen and (min-width: 600px) {
-
-
-  .search-container {
-    margin-top: 50px;
+@media only screen and (min-width: 375px) {
+  body {
+    font-size: 1.7em;
   }
+}
 
-  .search-input {
-    width: 77%;
+@media only screen and (min-width: 414px) {
+
+  body {
+    font-size: 2em;
   }
 
   .user-area {
-    width: 80%;
+    max-width: 600px;
+  }
+
+  .header {
     margin: 0 auto;
   }
 
-  .user-btn:hover {
-    background-color: #8C7D83;
+  .main-heading {
+    margin: 10px 0 20px 0;
   }
 
-  .user-btn:active {
-    background-color: #5B4447;
+  .user-area {
+    margin: 40px auto 0;
   }
+
+  .search-container {
+    padding: 0 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .search-input {
+    height: 20px;
+  }
+
+  .search-btn {
+    height: 44px;
+    width: 60px;
+  }
+
+  .user-input {
+    height: 48px;
+  }
+
+  .user-btn {
+    padding: 15px;
+    font-size: .6em;
+  }
+
+  .file-input-btn {
+    margin-top: 30px;
+  }
+
+  .view-and-add-btn-area {
+    margin: 48px 0 30px 0;
+  }
+
+  .photo-card-heading,
+  .photo-card-caption {
+    font-size: .7em;
+  }
+
+}
+
+@media only screen and (min-width: 500px) {
 
   .photo-area {
-    padding: 100px;
-    display: flex;
-    align-items: left;
-    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 30px 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+    grid-gap: 50px 50px;
   }
 
   .photo-card {
-    margin: 50px;
-    width: 425px;
+   margin: 0;
   }
 
-  .delete-icon:hover {
-    background-image: url("images/delete-active.svg")
+}
+
+@media only screen and (min-width: 768px) {
+
+  .header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0;
   }
 
-  .favorite-icon:hover {
-    background-image: url("images/favorite-active.svg")
-  }*/
+  .main-heading {
+    margin: 10px 30px;
+  }
+
+  .search-container {
+    width: 30%;
+    margin: 27px 30px 0 0;
+    padding: 0;
+  }
+
+  .photo-area {
+    padding: 50px 75px;
+  }
 
 }
