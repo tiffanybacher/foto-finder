@@ -246,13 +246,8 @@ button {
   background-image: url("images/favorite-active.svg")
 }
 
-@media only screen and (min-width: 600px) {
+/*@media only screen and (min-width: 600px) {
 
-  /*.header {
-    display: flex;
-    justify-content: space-between;
-    margin: 50px 50px 0 100px;
-  }*/
 
   .search-container {
     margin-top: 50px;
@@ -278,7 +273,6 @@ button {
   .photo-area {
     padding: 100px;
     display: flex;
-    /*justify-content: space-between;*/
     align-items: left;
     flex-wrap: wrap;
   }
@@ -294,6 +288,6 @@ button {
 
   .favorite-icon:hover {
     background-image: url("images/favorite-active.svg")
-  }
+  }*/
 
 }
