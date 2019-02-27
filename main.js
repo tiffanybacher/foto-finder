@@ -21,11 +21,12 @@ titleInput.addEventListener('input', enableAddBtn);
 captionInput.addEventListener('input', enableAddBtn);
 viewFavoritesBtn.addEventListener('click', toggleFavoritesBtn);
 captionInput.addEventListener('keypress', createNewPhotoOnEnter);
-addToAlbumBtn.addEventListener('click', uploadPhoto);
+fileInput.addEventListener('change', uploadPhoto);
 addToAlbumBtn.addEventListener('click', createNewPhoto);
+// addToAlbumBtn.addEventListener('click', createPhotoCard);
 userArea.addEventListener('keypress', blurOnEnter);
-photoArea.addEventListener('focusout', saveEdit);
 photoArea.addEventListener('keypress', blurOnEnter);
+photoArea.addEventListener('focusout', saveEdit);
 photoArea.addEventListener('click', favoriteCard);
 photoArea.addEventListener('click', removeCard);
 
@@ -49,12 +50,22 @@ function searchCards() {
 
 }
 
-function uploadPhoto() {
-  console.log(fileInput.files[0])
-if (fileInput.files[0]) {
+function uploadPhoto(e) {
+  console.log('fileInput: ', fileInput.files[0]);
+  if (fileInput.files[0]) {
     reader.readAsDataURL(fileInput.files[0]); 
     reader.onload = createNewPhoto;
   }
+  updateFilesLabel(e);
+}
+
+function updateFilesLabel(e) {
+  var fileName = e.target.value.split('\\').pop();
+  if (fileName) {
+    chooseFileBtn.innerHTML = fileName;
+  } else {
+    chooseFileBtn.innerHTML = 'Choose File';
+  };
 }
 
 function toggleFavoritesBtn() {
@@ -80,7 +91,7 @@ function enableAddBtn() {
 }
 
 function createNewPhoto(e) {
-  console.log(e.target.results)
+  console.log(e.target.result)
   var photo = new Photo(Date.now(), titleInput.value, captionInput.value, e.target.result);
   createPhotoCard(photo);
   allPhotos.push(photo);
@@ -97,11 +108,11 @@ function createPhotoCard(photo) {
   clearUserInputs();
 }
 
-function addPhotoProperties(card, photo, e) {
+function addPhotoProperties(card, photo) {
   card.querySelector('article').dataset.id = photo.id;
   card.querySelector('.photo-card-heading').innerText = photo.title;
-  // photoCardTemplate.innerHTML += `<img src=${e.target.result} />`;
   card.querySelector('.photo-card-caption').innerText = photo.caption;
+  
 }
 
 function setFavoriteToActive(photo, photoCard) {
@@ -121,6 +132,8 @@ function toggleEmptyPhotosMsg() {
 function clearUserInputs() {
   titleInput.value = '';
   captionInput.value = '';
+  // fileInput.value = '';
+  // chooseFileBtn.innerHTML = 'Choose File';
 }
 
 function createNewPhotoOnEnter(e) {

@@ -10,6 +10,7 @@ class Photo {
 
   saveToStorage(allPhotos) {
     localStorage.allPhotos = JSON.stringify(allPhotos);
+    console.log(this)
   }
 
   deleteFromStorage(allPhotos, i) {
@@ -23,7 +24,6 @@ class Photo {
     } else {
       this.caption = text;
     }
-    console.log(this)
   }
 
   updateFavoriteStatus() {
