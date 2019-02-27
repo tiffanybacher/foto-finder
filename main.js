@@ -17,8 +17,8 @@ var reader = new FileReader();
 // *** EVENT LISTENERS *** //
 searchInput.addEventListener('input', searchCards);
 searchBtn.addEventListener('click', searchCards);
-titleInput.addEventListener('input', enableAddBtn);
-captionInput.addEventListener('input', enableAddBtn);
+titleInput.addEventListener('input', toggleAddBtn);
+captionInput.addEventListener('input', toggleAddBtn);
 viewFavoritesBtn.addEventListener('click', toggleFavoritesBtn);
 captionInput.addEventListener('keypress', createNewPhotoOnEnter);
 fileInput.addEventListener('change', uploadPhoto);
@@ -85,9 +85,11 @@ function displayFavoriteCards() {
   favoritePhotos.forEach(photo => createPhotoCard(photo));
 }
 
-function enableAddBtn() {
-  if (titleInput.value !== '' && captionInput.value !== '' && fileInput.value !== '') {
+function toggleAddBtn() {
+  if (titleInput.value !== '' && captionInput.value !== '') {
     addToAlbumBtn.disabled = false;
+  } else {
+    addToAlbumBtn.disabled = true;
   }
 }
 
@@ -96,7 +98,7 @@ function createNewPhoto(e) {
   createPhotoCard(photo);
   allPhotos.push(photo);
   photo.saveToStorage(allPhotos);
-  addToAlbumBtn.disabled = true;
+  toggleAddBtn();
 }
 
 function createPhotoCard(photo) {
