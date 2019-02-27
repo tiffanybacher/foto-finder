@@ -236,8 +236,8 @@ button {
   background-image: url("images/favorite.svg");
 }
 
-.favorite-icon:focus,
-.favorite-icon:active {
+/*.favorite-icon:focus,*/
+.favorite-icon-active {
   background-image: url("images/favorite-active.svg")
 }
 
