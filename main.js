@@ -46,7 +46,10 @@ function displayAllCards() {
 }
 
 function searchCards() {
-
+  var searchQuery = searchInput.value.toLowerCase();
+  var searchResults = allPhotos.filter(photo => photo.title.toLowerCase().includes(searchQuery) || photo.caption.toLowerCase().includes(searchQuery));
+  photoArea.innerHTML = '';
+  searchResults.forEach(photo => createPhotoCard(photo));
 }
 
 function uploadPhoto(e) {
