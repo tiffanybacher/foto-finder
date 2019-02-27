@@ -50,7 +50,6 @@ function searchCards() {
 }
 
 function uploadPhoto(e) {
-  console.log('fileInput: ', fileInput.files[0]);
   if (fileInput.files[0]) {
     reader.readAsDataURL(fileInput.files[0]); 
     reader.onload = createNewPhoto;
@@ -90,7 +89,6 @@ function enableAddBtn() {
 }
 
 function createNewPhoto(e) {
-  console.log(e.target.result)
   var photo = new Photo(Date.now(), titleInput.value, captionInput.value, e.target.result);
   createPhotoCard(photo);
   allPhotos.push(photo);
