@@ -15,12 +15,15 @@ var photoCardTemplate = document.querySelector('template');
 // *** EVENT LISTENERS *** //
 searchInput.addEventListener('input', searchCards);
 searchBtn.addEventListener('click', searchCards);
+titleInput.addEventListener('input', enableAddBtn);
+captionInput.addEventListener('input', enableAddBtn);
 chooseFileBtn.addEventListener('click', uploadPhoto);
 viewFavoritesBtn.addEventListener('click', toggleFavoritesBtn);
 captionInput.addEventListener('keypress', createNewPhotoOnEnter);
 addToAlbumBtn.addEventListener('click', createNewPhoto);
+userArea.addEventListener('keypress', blurOnEnter);
 photoArea.addEventListener('focusout', saveEdit);
-photoArea.addEventListener('keypress', saveEditOnEnter);
+photoArea.addEventListener('keypress', blurOnEnter);
 photoArea.addEventListener('click', favoriteCard);
 photoArea.addEventListener('click', removeCard);
 
@@ -64,11 +67,18 @@ function displayFavoriteCards() {
   favoritePhotos.forEach(photo => createPhotoCard(photo));
 }
 
+function enableAddBtn() {
+  if (titleInput.value !== '' && captionInput.value !== '') {
+    addToAlbumBtn.disabled = false;
+  }
+}
+
 function createNewPhoto() {
   var photo = new Photo(Date.now(), titleInput.value, captionInput.value);
   createPhotoCard(photo);
   allPhotos.push(photo);
   photo.saveToStorage(allPhotos);
+  addToAlbumBtn.disabled = true;
 }
 
 function createPhotoCard(photo) {
@@ -143,7 +153,7 @@ function saveEdit(e) {
   }
 }
 
-function saveEditOnEnter(e) {
+function blurOnEnter(e) {
   if (e.key === 'Enter') {
     e.target.blur();
   }
