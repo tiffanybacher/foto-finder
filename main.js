@@ -23,7 +23,6 @@ viewFavoritesBtn.addEventListener('click', toggleFavoritesBtn);
 captionInput.addEventListener('keypress', createNewPhotoOnEnter);
 fileInput.addEventListener('change', uploadPhoto);
 addToAlbumBtn.addEventListener('click', createNewPhoto);
-// addToAlbumBtn.addEventListener('click', createPhotoCard);
 userArea.addEventListener('keypress', blurOnEnter);
 photoArea.addEventListener('keypress', blurOnEnter);
 photoArea.addEventListener('focusout', saveEdit);
@@ -85,7 +84,7 @@ function displayFavoriteCards() {
 }
 
 function enableAddBtn() {
-  if (titleInput.value !== '' && captionInput.value !== '') {
+  if (titleInput.value !== '' && captionInput.value !== '' && fileInput.value !== '') {
     addToAlbumBtn.disabled = false;
   }
 }
@@ -112,7 +111,7 @@ function addPhotoProperties(card, photo) {
   card.querySelector('article').dataset.id = photo.id;
   card.querySelector('.photo-card-heading').innerText = photo.title;
   card.querySelector('.photo-card-caption').innerText = photo.caption;
-  
+  card.querySelector('.photo-card-img').src = photo.file;
 }
 
 function setFavoriteToActive(photo, photoCard) {
@@ -132,8 +131,8 @@ function toggleEmptyPhotosMsg() {
 function clearUserInputs() {
   titleInput.value = '';
   captionInput.value = '';
-  // fileInput.value = '';
-  // chooseFileBtn.innerHTML = 'Choose File';
+  fileInput.value = '';
+  chooseFileBtn.innerHTML = 'Choose File';
 }
 
 function createNewPhotoOnEnter(e) {
