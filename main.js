@@ -76,7 +76,7 @@ function createPhotoCard(photo) {
   addPhotoProperties(photoCard, photo);
   setFavoriteToActive(photo, photoCard);
   photoArea.insertBefore(photoCard, photoArea.firstChild)
-  clearEmptyPhotosMsg();
+  toggleEmptyPhotosMsg();
   clearUserInputs();
 }
 
@@ -92,8 +92,12 @@ function setFavoriteToActive(photo, photoCard) {
   };
 }
 
-function clearEmptyPhotosMsg() {
+function toggleEmptyPhotosMsg() {
+  if (allPhotos === []) {
+    noPhotosMsg.style.display = 'block';
+  } else {
   noPhotosMsg.style.display = 'none';
+  }
 }
 
 function clearUserInputs() {
@@ -107,6 +111,14 @@ function createNewPhotoOnEnter(e) {
   };
 }
 
+function removeCard(e) {
+  if (e.target.classList.contains('delete-icon')) {
+    e.target.closest('article').remove();
+    var photoToRemove = reinstatePhoto(e);
+    var i = getPhotoIndex(e);
+    photoToRemove.deleteFromStorage(allPhotos, i);
+  }
+}
 
 function favoriteCard(e) {
   if (e.target.classList.contains('favorite-icon')) {
@@ -145,8 +157,7 @@ function getPhotoIndex(e) {
 }
 
 function reinstatePhoto(e) {
- var i = getPhotoIndex(e);
- var photo = allPhotos[i];
+ var photo = allPhotos[getPhotoIndex(e)];
  return new Photo(photo.id, photo.title, photo.caption, photo.file, photo.favorite);
 }
 
