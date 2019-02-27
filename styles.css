@@ -247,12 +247,21 @@ button {
   body {
     font-size: 1.7em;
   }
+
+  .main-heading-logo {
+  width: 49px;
+  }
+
 }
 
 @media only screen and (min-width: 414px) {
 
   body {
-    font-size: 2em;
+    font-size: 1.9em;
+  }
+
+  .main-heading-logo {
+  width: 56px;
   }
 
   .user-area {
@@ -312,6 +321,14 @@ button {
 
 @media only screen and (min-width: 500px) {
 
+  body {
+    font-size: 2em;
+  }
+
+  .main-heading-logo {
+  width: 58px;
+  }
+
   .photo-area {
     display: grid;
     grid-gap: 50px 50px;
@@ -322,6 +339,11 @@ button {
 
   .photo-card {
    margin: 0;
+  }
+
+  .photo-card-img {
+    height: 35vh;
+    object-fit: cover;
   }
 
 }
