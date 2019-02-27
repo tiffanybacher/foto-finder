@@ -246,21 +246,24 @@ button {
   background-image: url("images/favorite-active.svg")
 }
 
-/*@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) {
 
-  .header {
+  /*.header {
     display: flex;
     justify-content: space-between;
     margin: 50px 50px 0 100px;
-  }
+  }*/
 
   .search-container {
-    width: 30%;
     margin-top: 50px;
   }
 
+  .search-input {
+    width: 77%;
+  }
+
   .user-area {
-    max-width: 50%;
+    width: 80%;
     margin: 0 auto;
   }
 
@@ -274,11 +277,15 @@ button {
 
   .photo-area {
     padding: 100px;
+    display: flex;
+    /*justify-content: space-between;*/
+    align-items: left;
+    flex-wrap: wrap;
   }
 
   .photo-card {
     margin: 50px;
-    max-width: 575px
+    width: 425px;
   }
 
   .delete-icon:hover {
@@ -289,4 +296,4 @@ button {
     background-image: url("images/favorite-active.svg")
   }
 
-}*/
+}
