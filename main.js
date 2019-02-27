@@ -103,7 +103,7 @@ function createPhotoCard(photo) {
   var photoCard = photoCardTemplate.content.cloneNode(true);
   addPhotoProperties(photoCard, photo);
   setFavoriteToActive(photo, photoCard);
-  photoArea.insertBefore(photoCard, photoArea.firstChild)
+  photoArea.insertBefore(photoCard, photoArea.firstChild);
   toggleEmptyPhotosMsg();
   clearUserInputs();
 }

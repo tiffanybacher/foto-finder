@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Foto Finder</title>
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" type="text/css" href="styles.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,700,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
   <header class="header">
     <h1 class="main-heading">
       FOTO
-      <img src="images/foto-finder-logo.svg" alt="" class="main-heading--logo">
+      <img src="images/foto-finder-logo.svg" alt="" class="main-heading-logo">
       FINDER
     </h1>
     <div class="search-container">
@@ -21,7 +21,7 @@
       <button class="search-btn"><i class="search-icon fas fa-search"></i></button>
     </div>
   </header>
-  <section class="user-area">
+  <form class="user-area">
     <article class="user-input-area">
       <div class="title-input-area">
         <input type="text" class="user-input" id="title-input">
@@ -40,7 +40,7 @@
         <button class="user-btn add-to-album-btn" disabled="disabled">Add to Album</button>
       </div>
     </article>
-  </section>
+  </form>
   <section class="photo-area">
     <h2 class="empty-photo-area-heading photo-card-heading">NO PHOTOS YET</h2>
     <template>
