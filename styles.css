@@ -249,7 +249,7 @@ button {
   }
 
   .main-heading-logo {
-  width: 49px;
+    width: 49px;
   }
 
 }
@@ -257,11 +257,11 @@ button {
 @media only screen and (min-width: 414px) {
 
   body {
-    font-size: 1.9em;
+    font-size: 1.88em;
   }
 
   .main-heading-logo {
-  width: 56px;
+    width: 56px;
   }
 
   .user-area {
@@ -319,36 +319,11 @@ button {
 
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 768px) {
 
   body {
     font-size: 2em;
   }
-
-  .main-heading-logo {
-  width: 58px;
-  }
-
-  .photo-area {
-    display: grid;
-    grid-gap: 50px 50px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    margin: 0 auto;
-    padding: 30px 50px;
-  }
-
-  .photo-card {
-   margin: 0;
-  }
-
-  .photo-card-img {
-    height: 35vh;
-    object-fit: cover;
-  }
-
-}
-
-@media only screen and (min-width: 768px) {
 
   .header {
     display: flex;
@@ -361,11 +336,50 @@ button {
     margin: 10px 30px;
   }
 
+  .main-heading-logo {
+    width: 58px;
+  }
+
   .search-container {
     margin: 27px 30px 0 0;
     padding: 0;
     width: 30%;
   }
+
+  .photo-area {
+    display: grid;
+    grid-gap: 30px 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-items: center;
+    margin: 0 auto;
+    padding: 30px;
+  }
+
+  .photo-card {
+    margin: 0;
+    width: 335px;
+  }
+
+  .photo-card-img {
+    height: 40vh;
+    object-fit: cover
+  }
+
+}
+
+@media only screen and (min-width: 870px) {
+  
+  .photo-area {
+    grid-gap: 50px 50px;
+  }
+
+  .photo-card {
+    width: 270px;
+  }
+
+}
+
+@media only screen and (min-width: 1280px) {
 
   .photo-area {
     padding: 50px 75px;
