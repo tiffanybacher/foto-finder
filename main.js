@@ -15,8 +15,9 @@ var reader = new FileReader();
 
 
 // *** EVENT LISTENERS *** //
-searchInput.addEventListener('input', searchCards);
-searchBtn.addEventListener('click', searchCards);
+searchInput.addEventListener('input', displaySearchResults);
+searchInput.addEventListener('focusout', clearSearchInput);
+searchBtn.addEventListener('click', displaySearchResults);
 titleInput.addEventListener('input', toggleAddBtn);
 captionInput.addEventListener('input', toggleAddBtn);
 viewFavoritesBtn.addEventListener('click', toggleFavoritesBtn);
@@ -45,11 +46,31 @@ function displayAllCards() {
   allPhotos.forEach(photo => createPhotoCard(photo));
 }
 
-function searchCards() {
-  var searchQuery = searchInput.value.toLowerCase();
-  var searchResults = allPhotos.filter(photo => photo.title.toLowerCase().includes(searchQuery) || photo.caption.toLowerCase().includes(searchQuery));
+function displaySearchResults() {
   photoArea.innerHTML = '';
+  var searchResults = filterSearch();
   searchResults.forEach(photo => createPhotoCard(photo));
+}
+
+function filterSearch() {
+  if (viewFavoritesBtn.innerText == 'View All Photos' || viewFavoritesBtn.innerText == 'Go Back to Favorites') {
+    var favoritePhotos = allPhotos.filter(photo => photo.favorite);
+    var searchResults = findSearchResults(favoritePhotos);
+    viewFavoritesBtn.innerText = 'Go Back to Favorites';
+  } else {
+    var searchResults = findSearchResults(allPhotos);
+    viewFavoritesBtn.innerText = 'Go Back to All';
+  } 
+  return searchResults
+}
+
+function findSearchResults(photos) {
+  var searchQuery = searchInput.value.toLowerCase();
+  return photos.filter(photo => photo.title.toLowerCase().includes(searchQuery) || photo.caption.toLowerCase().includes(searchQuery));
+}
+
+function clearSearchInput() {
+  searchInput.value = '';
 }
 
 function uploadPhoto(e) {
@@ -71,7 +92,7 @@ function updateFilesLabel(e) {
 
 function toggleFavoritesBtn() {
   photoArea.innerHTML = '';
-  if (viewFavoritesBtn.innerText == 'View Favorites') {
+  if (viewFavoritesBtn.innerText == 'View Favorites' || viewFavoritesBtn.innerText == 'Go Back to Favorites') {
     displayFavoriteCards();
     viewFavoritesBtn.innerText = 'View All Photos';
   } else {
