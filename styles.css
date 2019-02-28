@@ -370,18 +370,11 @@ button {
   
   .photo-area {
     grid-gap: 50px 50px;
-  }
+    padding: 50px 75px;
+  } 
 
   .photo-card {
     width: 270px;
-  }
-
-}
-
-@media only screen and (min-width: 1280px) {
-
-  .photo-area {
-    padding: 50px 75px;
   }
 
 }
